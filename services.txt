@@ -1,0 +1,4 @@
+compute: EC2, Lambda
+storage: S3
+database: RDS
+networking: VPC, Route 53
