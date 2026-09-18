@@ -12,7 +12,7 @@ This is the highest access level in an AWS account and can perform important acc
 
 ### What to do instead
 
-The root account should not be used for daily work. Create users, groups, or roles and use IAM to give them access to what they need to perform their required job and nothing more. Also enable MFA for the root account to add another layer of security.
+The root account should not be used for daily work. Create users, groups, or roles and use IAM to give them access to what they need to perform their required job and nothing more. This follows the principle of least privilege, which means giving an identity only the permissions it needs to perform its job and nothing more. Also enable MFA for the root account to add another layer of security.
 
 ## Finding 2 — Public GitHub access key
 
@@ -40,7 +40,7 @@ This is creating permanent access for something that only needs temporary access
 
 ### What to do instead
 
-The better approach is to create an IAM role with only the permissions the application needs and attach the role to the EC2 instance. This allows the application to use temporary credentials instead of storing a permanent access key in its configuration.
+The better approach is to create an IAM role with only the permissions the application needs and attach the role to the EC2 instance. This follows the principle of least privilege because the application only gets the permissions it needs to perform its job. It also allows the application to use temporary credentials instead of storing a permanent access key in its configuration.
 
 ## Finding 4 — Unencrypted S3 customer records
 
@@ -80,6 +80,6 @@ Enable and appropriately configure CloudTrail so account activity can be recorde
 
 3. CloudTrail status unknown — Because we need to know what is happening in the account and have a way to investigate suspicious or unexpected actions.
 
-4. EC2 application access key — Because we don't need to give permanent access to something that only needs temporary access.
+4. EC2 application access key — Because we don't need to give permanent access to something that only needs temporary access, and we should follow the principle of least privilege.
 
 5. Unencrypted S3 customer records — Because encryption provides an additional layer of protection for customer data while it is stored.
